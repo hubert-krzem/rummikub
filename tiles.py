@@ -17,12 +17,11 @@ class Tile:
         if not isinstance(colour, str):
             raise TypeError(f"Colour must be a string")
         colour = colour.capitalize()
-
         if not colour in self.validColours:
             raise ValueError(f"Colour must be one of {self.validColours}")
         
         if not isinstance(value, int):
-            raise TypeError(f"Value must be an int")
+            raise TypeError(f"Value must be an integer")
         if not value in self.validValues:
             raise ValueError(f"Value must be within range {[self.validValues[0], self.validValues[-1]]}")
         
@@ -31,3 +30,5 @@ class Tile:
 
     def __str__(self):
         return f"{self.colour} {self.value}"
+    
+print(Tile.validValues)
