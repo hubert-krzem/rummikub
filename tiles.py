@@ -6,13 +6,12 @@ Once initiated these values cannot be modified
 '''
 
 # from dataclasses import dataclass
-
 # @dataclass(frozen=True)
 class Tile:
+    # Only accept: values -> 1 - 13 ; colour -> Red, Black, Blue, Orange
     validColours = ["Red", "Blue", "Black", "Orange"]
     validValues = [i for i in range(1, 14)]
 
-    # Only accept: values -> 1 - 13 ; colour -> Red, Black, Blue, Orange
     def __init__(self, colour, value):
 
         if not isinstance(colour, str):
@@ -22,6 +21,8 @@ class Tile:
         if not colour in self.validColours:
             raise ValueError(f"Colour must be one of {self.validColours}")
         
+        if not isinstance(value, int):
+            raise TypeError(f"Value must be an int")
         if not value in self.validValues:
             raise ValueError(f"Value must be within range {[self.validValues[0], self.validValues[-1]]}")
         
@@ -30,7 +31,3 @@ class Tile:
 
     def __str__(self):
         return f"{self.colour} {self.value}"
-    
-tile = Tile("red", 5)
-
-print(tile)
