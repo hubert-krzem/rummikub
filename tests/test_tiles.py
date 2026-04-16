@@ -8,8 +8,8 @@ def test_str_valid():
 
 # Test invalid inputs
 def test_invalid_colour():
-    with pytest.raises(TypeError):
-        tile = Tile("Purple", 5)
+    with pytest.raises(AttributeError):
+        tile = Tile(Colour.PURPLE, 5)
 
 def test_invalid_value_14():
     with pytest.raises(ValueError):
@@ -26,7 +26,7 @@ def test_invalid_colour_type():
 def test_invalid_value_type():
     with pytest.raises(TypeError):
         tile = Tile(Colour.RED, "1")
-
+        
 
 # Valid colour input tests
 def test_init_red():
